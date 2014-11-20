@@ -12,12 +12,43 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.birin.retailstore.provider.CursorRetainingFragment;
+import com.birin.retailstore.utils.Constants;
+import com.birin.retailstore.views.DataListFragment;
+
 public class MainActivity extends Activity {
+
+	protected CursorRetainingFragment dataRetainingFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		loadRetainedFragment();
+		FragmentManager fm = getFragmentManager();
+		fm.beginTransaction().add(R.id.container, new DataListFragment())
+				.commit();
+	}
+
+	private void loadRetainedFragment() {
+		FragmentManager fm = getFragmentManager();
+		dataRetainingFragment = (CursorRetainingFragment) fm
+				.findFragmentByTag(Constants.TAG_RETAINED_FRAGMENT);
+
+		// If the Fragment is non-null, then it is currently being
+		// retained across a configuration
+		// changgenerateSomeDummyDataAndAddToList();e.
+		if (dataRetainingFragment == null) {
+			dataRetainingFragment = new CursorRetainingFragment();
+			if (dataRetainingFragment != null) {
+				fm.beginTransaction()
+						.add(dataRetainingFragment,
+								Constants.TAG_RETAINED_FRAGMENT).commit();
+			}
+		}
+	}
+
+	public void dummy() {
 
 		ActionBar mActionBar = getActionBar();
 		mActionBar.setDisplayShowHomeEnabled(false);
@@ -53,5 +84,4 @@ public class MainActivity extends Activity {
 		fragmentManager.beginTransaction().replace(R.id.container, fragment)
 				.commit();
 	}
-
 }

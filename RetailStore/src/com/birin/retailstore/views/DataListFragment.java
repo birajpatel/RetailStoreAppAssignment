@@ -21,6 +21,7 @@ public class DataListFragment extends Fragment implements
 
 	private ListView listView;
 	private Context context;
+	private ProductListAdapter adapter;
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -32,6 +33,8 @@ public class DataListFragment extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		listView = new ListView(getActivity());
+		adapter = new ProductListAdapter(context, null, false);
+		listView.setAdapter(adapter);
 		return listView;
 	}
 
@@ -51,11 +54,12 @@ public class DataListFragment extends Fragment implements
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		Toast.makeText(context, "Data " + data.getCount(), Toast.LENGTH_LONG)
 				.show();
+		adapter.swapCursor(data);
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-
+		adapter.swapCursor(null);
 	}
 
 }

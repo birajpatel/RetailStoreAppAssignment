@@ -33,7 +33,7 @@ public class DataListFragment extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		listView = new ListView(getActivity());
-		adapter = new ProductListAdapter(context, null, false);
+		adapter = new ProductListAdapter(context, null);
 		listView.setAdapter(adapter);
 		return listView;
 	}

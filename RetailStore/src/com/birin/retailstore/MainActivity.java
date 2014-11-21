@@ -2,7 +2,6 @@ package com.birin.retailstore;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +23,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		setActionBar();
 		loadRetainedFragment();
 		FragmentManager fm = getFragmentManager();
 		fm.beginTransaction().add(R.id.container, new DataListFragment())
@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	public void dummy() {
+	private void setActionBar() {
 
 		ActionBar mActionBar = getActionBar();
 		mActionBar.setDisplayShowHomeEnabled(false);
@@ -73,15 +73,5 @@ public class MainActivity extends Activity {
 
 		mActionBar.setCustomView(mCustomView);
 		mActionBar.setDisplayShowCustomEnabled(true);
-
-		Fragment fragment = new OpertingSystemFragment();
-		Bundle args = new Bundle();
-		args.putInt(OpertingSystemFragment.ARG_OS, 188);
-		fragment.setArguments(args);
-
-		// Insert the fragment by replacing any existing fragment
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.container, fragment)
-				.commit();
 	}
 }

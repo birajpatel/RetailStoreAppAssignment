@@ -1,5 +1,6 @@
 package com.birin.retailstore.views;
 
+import com.birin.retailstore.R;
 import com.birin.retailstore.provider.ProductTableConstants;
 import com.birin.retailstore.utils.DummyProductStore;
 
@@ -36,6 +37,7 @@ public class ProductListAdapter extends CursorAdapter {
 		ImageView imageView = new ImageView(context);
 		imageView.setLayoutParams(new AbsListView.LayoutParams(DEVICE_WT,
 				(int) (DEVICE_WT * (9 / 16.0))));
+		imageView.setBackgroundResource(R.drawable.background);
 		return imageView;
 	}
 

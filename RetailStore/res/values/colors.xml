@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="action_bar_background_color">#4ED9D4</color>
-    <color name="list_backgroud_color">#36918E</color>
+    <color name="action_bar_background_color">#36918E</color>
+    <color name="action_bar_selected_background_color">#256361</color>
+    <color name="action_bar_notification_ballon_color">#E82715</color>
+    
+    <color name="list_backgroud_color">#d3d6db</color>
+    <color name="kart_action_btn_color_normal">#e66e63</color>
+    <color name="kart_action_btn_color_selected">#b84237</color>
+    
 
 </resources>

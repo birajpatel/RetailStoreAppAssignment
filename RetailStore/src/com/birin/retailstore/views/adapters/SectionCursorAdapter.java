@@ -13,22 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.birin.retailstore.views;
-
-import android.content.Context;
-import android.database.Cursor;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.widget.CursorAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.SectionIndexer;
+package com.birin.retailstore.views.adapters;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.SortedMap;
 import java.util.TreeMap;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CursorAdapter;
+import android.widget.SectionIndexer;
 
 public abstract class SectionCursorAdapter extends CursorAdapter implements SectionIndexer {
 

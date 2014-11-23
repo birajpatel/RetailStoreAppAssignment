@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * SQL helper for content-provider
+ */
 public class RetailProviderSqlHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "RetailStore";

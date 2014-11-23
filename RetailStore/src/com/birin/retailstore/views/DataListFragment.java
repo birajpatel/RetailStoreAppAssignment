@@ -1,9 +1,5 @@
 package com.birin.retailstore.views;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -11,30 +7,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.birin.retailstore.provider.ProductTableConstants;
 import com.birin.retailstore.provider.RetailProvider;
+import com.birin.retailstore.views.adapters.ProductListAdapter;
 
-public class DataListFragment extends Fragment implements
-		LoaderCallbacks<Cursor> {
+/**
+ * Main listing fragment which displays all the data from DB.
+ */
+public class DataListFragment extends BaseDataFragment implements
+		OnItemClickListener {
 
 	private ListView listView;
-	private Context context;
 	private ProductListAdapter adapter;
-
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		context = activity.getApplicationContext();
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		listView = new ListView(getActivity());
-		adapter = new ProductListAdapter(context, null);
+		adapter = new ProductListAdapter(context, null, eventHandler);
+		listView.setDivider(null);
 		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(this);
 		return listView;
 	}
 
@@ -52,8 +49,6 @@ public class DataListFragment extends Fragment implements
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-		Toast.makeText(context, "Data " + data.getCount(), Toast.LENGTH_LONG)
-				.show();
 		adapter.swapCursor(data);
 	}
 
@@ -62,4 +57,16 @@ public class DataListFragment extends Fragment implements
 		adapter.swapCursor(null);
 	}
 
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		int correctPosition = adapter
+				.getCursorPositionWithoutSections(position);
+		Cursor cursor = adapter.getCursor();
+		if (cursor.moveToPosition(correctPosition)) {
+			int productId = cursor.getInt(cursor
+					.getColumnIndex(ProductTableConstants.PRODUCT_ID));
+			launchProductDetailFragment(productId);
+		}
+	}
 }

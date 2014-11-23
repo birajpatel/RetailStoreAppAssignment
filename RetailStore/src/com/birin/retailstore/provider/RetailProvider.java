@@ -13,6 +13,10 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
+/**
+ * Content provider so that, Our application can easily monitor data using
+ * CursorLoader mechanism.
+ */
 public class RetailProvider extends ContentProvider {
 
 	// Constant fields

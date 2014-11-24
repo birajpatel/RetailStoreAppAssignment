@@ -22,6 +22,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
+            android:clickable="true"
             android:text="@string/cart_is_empty"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/black" />

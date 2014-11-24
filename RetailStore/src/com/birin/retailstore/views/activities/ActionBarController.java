@@ -1,4 +1,4 @@
-package com.birin.retailstore.views;
+package com.birin.retailstore.views.activities;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -14,25 +14,15 @@ import com.birin.retailstore.R;
 import com.birin.retailstore.provider.ProductTableConstants;
 import com.birin.retailstore.utils.Constants;
 
-// TODO: Auto-generated Javadoc
 /**
  * This class is responsible for updating & setting up action bar.
  */
 public class ActionBarController {
 
-	/** The cart size count. */
 	private TextView cartSizeCount;
-
-	/** The cart action view. */
 	private View cartActionView;
-
-	/** The context. */
 	private Context context;
-
-	/** The action bar. */
 	private ActionBar actionBar;
-
-	/** The cart action click listner. */
 	private OnCartClickListener cartActionClickListner;
 
 	/**

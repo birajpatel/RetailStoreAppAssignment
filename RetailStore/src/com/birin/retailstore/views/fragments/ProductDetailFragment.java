@@ -1,4 +1,4 @@
-package com.birin.retailstore.views;
+package com.birin.retailstore.views.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

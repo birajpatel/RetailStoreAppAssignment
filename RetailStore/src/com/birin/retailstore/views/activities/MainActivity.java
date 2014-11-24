@@ -1,4 +1,4 @@
-package com.birin.retailstore.views;
+package com.birin.retailstore.views.activities;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -12,8 +12,9 @@ import android.os.Bundle;
 import com.birin.retailstore.R;
 import com.birin.retailstore.provider.ProductTableConstants;
 import com.birin.retailstore.provider.RetailProvider;
-import com.birin.retailstore.tasks.DummyDataCopierTask;
 import com.birin.retailstore.utils.Utils;
+import com.birin.retailstore.views.fragments.CartFragment;
+import com.birin.retailstore.views.fragments.DataListFragment;
 
 public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 		ActionBarController.OnCartClickListener {
@@ -27,7 +28,6 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 		actionBarController = new ActionBarController(getApplicationContext(),
 				this, getActionBar());
 		actionBarController.setupActionBar(Utils.getActionBarHeight(this));
-		runAddDataTaskToEnsureMinimumData();
 		loadListingFragment();
 		getLoaderManager().initLoader(0, null, this);
 	}
@@ -36,10 +36,6 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 		FragmentManager fm = getFragmentManager();
 		fm.beginTransaction().add(R.id.container, new DataListFragment())
 				.commit();
-	}
-
-	private void runAddDataTaskToEnsureMinimumData() {
-		new DummyDataCopierTask(getApplicationContext()).execute();
 	}
 
 	@Override
